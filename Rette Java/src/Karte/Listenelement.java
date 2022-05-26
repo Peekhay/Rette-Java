@@ -46,6 +46,10 @@ public abstract class Listenelement {
 	public void setAufgedeckt(boolean aufgedeckt) {
 		this.aufgedeckt = aufgedeckt;
 	}
+	public void setEvent(Fight f) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

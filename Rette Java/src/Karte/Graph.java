@@ -15,7 +15,7 @@ public class Graph {
 		
 		mitteBilder();
 		
-		
+		kampfBeispiel();
 	}
 	
 	private void graphenErzeugen() {
@@ -96,4 +96,14 @@ public class Graph {
 		lem[x][y]= l;
 	}
 
+	private void kampfBeispiel() {
+		
+		Fight f = new Fight();
+		f.setEnemy("MarcoMaurer");
+		f.setInfo("Du triffst auf Marco Maurer, einen der geführchtetsten Programmier-Zauberer "
+				+ "auf ganz Java. Seit der Herrschaft von professor P ist er sein treuer"
+				+ " Diener und bewacht den Hafen der Insel. Er fordert dich zum Duell heraus. "
+				+ "Wenn du die Herausforderung annimmst, drücke 'h'. Wenn du lieber fliehen möchtest drücke 'f'");
+		lem[1][17].setEvent(f);
+	}
 }

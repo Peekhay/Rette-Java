@@ -14,6 +14,7 @@ public class Model {
 	private GamePanel gameView;
 	private Player player;
 	private Graph graph;
+	private boolean userMove;
 	//private MenuPanel menuView;
 	//private MenuPanel startView;
 	
@@ -28,7 +29,7 @@ public class Model {
 		frame.pack();
 		gameView.init();
 		updateKoordinaten(0, 0);
-		
+		userMove = true;
 	}
 	
 	public void addKL(GameController gameC) {
@@ -120,4 +121,13 @@ public class Model {
 		gameView.resetAvatar();
 		gameView.zeichnen(getKarte());
 	}
+
+	public boolean isUserMove() {
+		return userMove;
+	}
+
+	public void setUserMove(boolean userMove) {
+		this.userMove = userMove;
+	}
+	
 }

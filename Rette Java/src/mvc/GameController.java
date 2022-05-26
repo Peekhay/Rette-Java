@@ -24,15 +24,19 @@ public class GameController implements KeyListener{
 			// TODO Auto-generated method stub
 			  switch(e.getKeyCode()) {
 			  case 37: //links
+				  model.animateAvatar(-1,0);
 				  model.updateKoordinaten(-1, 0);
 			   break;
 			  case 38: //oben
+				  model.animateAvatar(0,-1);
 				  model.updateKoordinaten(0, -1);
 			   break;
 			  case 39: //rechts
+				  model.animateAvatar(1, 0);
 				  model.updateKoordinaten(1, 0);
 			   break;
 			  case 40: //unten
+				  model.animateAvatar(0,1);
 				  model.updateKoordinaten(0, 1);
 			   break;
 			  }

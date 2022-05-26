@@ -17,9 +17,11 @@ public class GamePanel extends Canvas{
 	private Image image;
 	private ImageIcon imgI;
 	private ImageLoader imgl;
-	private Graphics2D g2D;
+	private Graphics2D g;
 	public BufferStrategy strategy;
 	private Dimension d;
+	private int avatarX;
+	private int avatarY;
 
 	
 	public GamePanel(){
@@ -31,7 +33,8 @@ public class GamePanel extends Canvas{
 				
 		image = imgI.getImage();
 		
-		
+		avatarX = 220;
+		avatarY = 221;
 	}
 	
 	public void init() {
@@ -64,7 +67,7 @@ public class GamePanel extends Canvas{
 		
 		updateKarte(l,g);
 		
-		g.drawImage(imgl.getAvatar(), 220, 221, null);
+		g.drawImage(imgl.getAvatar(),avatarX, avatarY, null);
 		
 		strategy.show();
         g.dispose();
@@ -93,6 +96,14 @@ public class GamePanel extends Canvas{
 	public Dimension getDimension() {
 		return d;
 	}
-
+	public void moveAvatar(int x, int y) {
+		avatarX = avatarX+5*x;
+		avatarY = avatarY+5*y;
+	}
+	public void resetAvatar() {
+		avatarX = 220;
+		avatarY = 221;
+	}
+	
+		
 }
-

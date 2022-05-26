@@ -7,6 +7,7 @@ import Karte.Abschluss;
 import Karte.Graph;
 import Karte.Knoten;
 import Karte.Listenelement;
+import java.util.concurrent.TimeUnit;
 
 public class Model {
 	private MyFrame frame;
@@ -104,5 +105,19 @@ public class Model {
 			return false;
 		}
 			return true;
+	}
+	public void animateAvatar(int x, int y){
+		for(int i = 0; i <20; i++) {
+			gameView.moveAvatar(x, y);
+			gameView.zeichnen(getKarte());
+			try {
+				TimeUnit.MILLISECONDS.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		gameView.resetAvatar();
+		gameView.zeichnen(getKarte());
 	}
 }

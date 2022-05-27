@@ -24,37 +24,24 @@ public class GameController implements KeyListener{
 			if(model.isUserMove()) {
 				  switch(e.getKeyCode()) {
 				  case 37: //links
-					  model.setUserMove(false);
-					  model.animateAvatar(-1,0);
-					  model.updateKoordinaten(-1, 0);
-					  //model.setUserMove(true);
-				   break;
+					  model.setChangeX(-1);
+					  break;
 				  case 38: //oben
-					  model.setUserMove(false);
-					  model.animateAvatar(0,-1);
-					  model.updateKoordinaten(0, -1);
-					  //model.setUserMove(true);
-				   break;
+					  model.setChangeY(-1);
+					  break;
 				  case 39: //rechts
-					  model.setUserMove(false);
-					  model.animateAvatar(1, 0);
-					  model.updateKoordinaten(1, 0);
-					  //model.setUserMove(true);
-				   break;
+					  model.setChangeX(1);
+					  break;
 				  case 40: //unten
-					  model.setUserMove(false);
-					  model.animateAvatar(0,1);
-					  model.updateKoordinaten(0, 1);
-				   break;
+					  model.setChangeY(1);
+					  break;
 				  }
 				}
 			if(e.getKeyCode()== 10) { // enter
 				model.setUserMove(true);
-				model.updateKoordinaten(0, 0);
 			}
 			if(e.getKeyCode()== 73 ) { // i
-				model.drawInv();
-				model.updateKoordinaten(0, 0);
+				model.showInv();
 			}
 		}
 

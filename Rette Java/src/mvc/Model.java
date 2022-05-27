@@ -17,6 +17,8 @@ public class Model {
 	private Graph graph;
 	private boolean userMove;
 	private GameController g;
+	private int changeX;
+	private int changeY;
 	//private MenuPanel menuView;
 	//private MenuPanel startView;
 	
@@ -30,18 +32,17 @@ public class Model {
 		frame.add(gameView);
 		frame.pack();
 		gameView.init();
-		updateKoordinaten(0, 0);
+		//updateKoordinaten(0, 0);
 		userMove = true;
-		gameView.zeichnen(getKarte(), player.getInv());
+		//gameView.zeichnen(getKarte(), player.getInv());
 		g = new GameController(this);
-		
-	}
-	
-	public void addKL(GameController gameC) {
-		frame.addKeyListener(gameC);
+		frame.addKeyListener(g);
 		frame.pack();
+	
 	}
+
 	public void zeichnen() {
+		updateKoordinaten();
 		gameView.zeichnen(getKarte(),player.getInv());
 	}
 	
@@ -60,7 +61,7 @@ public class Model {
 		return temp;
 	}
 	
-	public void updateKoordinaten(int changeX, int changeY) {
+	public void updateKoordinaten() {
 		if(check(changeX,changeY)) {
 			player.setAktuellerKnotenX(player.getAktuellerKnotenX()+changeX);
 			player.setAktuellerKnotenY(player.getAktuellerKnotenY()+changeY);
@@ -102,10 +103,9 @@ public class Model {
 				temp = graph.getKnoten(tempx,tempy);
 				temp.setAufgedeckt(true);
 				graph.updateKnoten(temp,tempx,tempy);
-			
-			
-			gameView.zeichnen(getKarte(),player.getInv());
 		}
+		changeX = 0;
+		changeY = 0;
 	}
 		
 	public boolean check(int changeX, int changeY) {
@@ -114,6 +114,7 @@ public class Model {
 		}
 			return true;
 	}
+	/*
 	public void animateAvatar(int x, int y){
 		for(int i = 0; i <20; i++) {
 			gameView.moveAvatar(x, y);
@@ -128,7 +129,7 @@ public class Model {
 		gameView.resetAvatar();
 		gameView.zeichnen(getKarte(),player.getInv());
 	}
-
+	 */
 	public boolean isUserMove() {
 		return userMove;
 	}
@@ -136,8 +137,31 @@ public class Model {
 	public void setUserMove(boolean userMove) {
 		this.userMove = userMove;
 	}
-	public void drawInv() {
-		gameView.setShowInv(true);
+	public void showInv() {
+		if(gameView.isShowInv()) {
+			gameView.setShowInv(false);
+		}else {
+			gameView.setShowInv(true);
+		}
+	}
+
+	public int getChangeX() {
+		return changeX;
+	}
+
+	public void setChangeX(int changeX) {
+		this.changeX = changeX;
+		userMove = false;
+	}
+
+	public int getChangeY() {
+		return changeY;
 		
 	}
+
+	public void setChangeY(int changeY) {
+		this.changeY = changeY;
+		userMove = false;
+	}
+	
 }

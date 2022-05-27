@@ -1,4 +1,4 @@
-package Inventar;
+package Player;
 
 public class Kampf {
 

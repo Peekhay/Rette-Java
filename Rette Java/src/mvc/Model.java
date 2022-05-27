@@ -2,11 +2,12 @@ package mvc;
 
 import GUI.GamePanel;
 import GUI.MyFrame;
-import Inventar.Player;
 import Karte.Abschluss;
 import Karte.Graph;
 import Karte.Knoten;
 import Karte.Listenelement;
+import Player.Player;
+
 import java.util.concurrent.TimeUnit;
 
 public class Model {
@@ -15,6 +16,7 @@ public class Model {
 	private Player player;
 	private Graph graph;
 	private boolean userMove;
+	private GameController g;
 	//private MenuPanel menuView;
 	//private MenuPanel startView;
 	
@@ -30,13 +32,18 @@ public class Model {
 		gameView.init();
 		updateKoordinaten(0, 0);
 		userMove = true;
+		gameView.zeichnen(getKarte(), player.getInv());
+		g = new GameController(this);
+		
 	}
 	
 	public void addKL(GameController gameC) {
 		frame.addKeyListener(gameC);
 		frame.pack();
 	}
-	
+	public void zeichnen() {
+		gameView.zeichnen(getKarte(),player.getInv());
+	}
 	
 	public Listenelement[][] getKarte() {
 		Listenelement[][] temp = new Listenelement[5][5];
@@ -97,7 +104,7 @@ public class Model {
 				graph.updateKnoten(temp,tempx,tempy);
 			
 			
-			gameView.zeichnen(getKarte());
+			gameView.zeichnen(getKarte(),player.getInv());
 		}
 	}
 		
@@ -110,7 +117,7 @@ public class Model {
 	public void animateAvatar(int x, int y){
 		for(int i = 0; i <20; i++) {
 			gameView.moveAvatar(x, y);
-			gameView.zeichnen(getKarte());
+			gameView.zeichnen(getKarte(),player.getInv());
 			try {
 				TimeUnit.MILLISECONDS.sleep(50);
 			} catch (InterruptedException e) {
@@ -119,7 +126,7 @@ public class Model {
 			}
 		}
 		gameView.resetAvatar();
-		gameView.zeichnen(getKarte());
+		gameView.zeichnen(getKarte(),player.getInv());
 	}
 
 	public boolean isUserMove() {
@@ -129,5 +136,8 @@ public class Model {
 	public void setUserMove(boolean userMove) {
 		this.userMove = userMove;
 	}
-	
+	public void drawInv() {
+		gameView.setShowInv(true);
+		
+	}
 }

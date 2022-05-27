@@ -9,6 +9,7 @@ import Karte.Abschluss;
 import Karte.Graph;
 import Karte.Knoten;
 import Karte.Listenelement;
+import Player.Inventar;
 
 
 public class GamePanel extends Canvas{
@@ -22,6 +23,7 @@ public class GamePanel extends Canvas{
 	private Dimension d;
 	private int avatarX;
 	private int avatarY;
+	private boolean showInv;
 
 	
 	public GamePanel(){
@@ -35,6 +37,8 @@ public class GamePanel extends Canvas{
 		
 		avatarX = 220;
 		avatarY = 221;
+		
+		showInv = false;
 	}
 	
 	public void init() {
@@ -43,7 +47,7 @@ public class GamePanel extends Canvas{
     	strategy = getBufferStrategy();    	
     }
 	
-	public void zeichnen(Listenelement[][] l) {
+	public void zeichnen(Listenelement[][] l, Inventar inv) {
 		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
         
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -69,6 +73,12 @@ public class GamePanel extends Canvas{
 		
 		g.drawImage(imgl.getAvatar(),avatarX, avatarY, null);
 		
+		if(showInv) {
+			invZeichnen(inv,g);
+		}
+		
+		drawTextMove((Knoten)l[2][2], g);
+		
 		strategy.show();
         g.dispose();
 		
@@ -89,6 +99,17 @@ public class GamePanel extends Canvas{
 		}
 	}
 	
+	public void invZeichnen(Inventar inv,  Graphics2D g) {
+		g.drawImage(imgl.loadItem(inv.getHelmet().getPic()),20,540,null);
+		g.drawImage(imgl.loadItem(inv.getChestplate().getPic()),106,540,null);
+		g.drawImage(imgl.loadItem(inv.getBoots().getPic()),192,540,null);
+		
+		g.drawImage(imgl.loadItem(inv.getWeapon1().getPic()),278,540,null);
+		g.drawImage(imgl.loadItem(inv.getWeapon2().getPic()),364,540,null);
+		g.drawImage(imgl.loadItem(inv.getWeapon3().getPic()),450,540,null);
+	}
+	
+	
 	public ImageIcon icon() {
 		return imgl.getImg();
 	}
@@ -104,6 +125,17 @@ public class GamePanel extends Canvas{
 		avatarX = 220;
 		avatarY = 221;
 	}
+
+	public boolean isShowInv() {
+		return showInv;
+	}
+
+	public void setShowInv(boolean showInv) {
+		this.showInv = showInv;
+	}
 	
+	public void drawTextMove(Knoten k,Graphics g) {
+		g.drawString(k.getEvent().getInfo(),550 ,80 );
+	}
 		
 }

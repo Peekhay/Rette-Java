@@ -3,15 +3,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import GUI.MyFrame;
-import Inventar.Player;
 import Karte.Graph;
+import Player.Player;
 
 public class GameController implements KeyListener{
 		private Model model;
 		
-		public GameController() {
-			model = new Model();
-			model.addKL(this);
+		public GameController(Model model) {
+			this.model = model;
 		}
 
 		@Override
@@ -49,8 +48,13 @@ public class GameController implements KeyListener{
 				   break;
 				  }
 				}
-			if(e.getKeyCode()== 10) {
+			if(e.getKeyCode()== 10) { // enter
 				model.setUserMove(true);
+				model.updateKoordinaten(0, 0);
+			}
+			if(e.getKeyCode()== 73 ) { // i
+				model.drawInv();
+				model.updateKoordinaten(0, 0);
 			}
 		}
 

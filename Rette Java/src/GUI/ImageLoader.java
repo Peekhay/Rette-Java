@@ -1,6 +1,8 @@
 package GUI;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.LinkedList;
+
 import javax.swing.*;
 
 import Karte.Knoten;
@@ -11,6 +13,7 @@ public class ImageLoader {
 	private ImageIcon imagei;
 	private ImageIcon hud;
 	private ImageIcon avatar;
+	private LinkedList<String> inv;
 	
 	public ImageLoader() {
 		
@@ -19,6 +22,7 @@ public class ImageLoader {
 		hud = new ImageIcon("interface/hud.png");
 		// hintergrund = new ImageIcon("interface/Wasser-Hintergrund.png");
 		avatar = new ImageIcon("interface/avatar.png");
+		
 		
 	}
 
@@ -34,5 +38,8 @@ public class ImageLoader {
 	}
 	public ImageIcon loadImage (Listenelement k) {
 		return new ImageIcon(k.getKarte());
+	}
+	public Image loadItem(String name) {
+		return new ImageIcon(name).getImage();
 	}
 }

@@ -9,7 +9,7 @@ public class Knoten extends Listenelement{
 	private String karte;
 	
 	public Knoten() {
-		
+		event = new Fight();
 	}
 	
 	public boolean isAufgedeckt() {
@@ -27,5 +27,8 @@ public class Knoten extends Listenelement{
 	}
 	public void setEvent(Event e) {
 		event = e;
+	}
+	public Event getEvent() {
+		return event;
 	}
 }

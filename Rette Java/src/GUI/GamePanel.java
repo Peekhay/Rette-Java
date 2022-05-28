@@ -24,12 +24,13 @@ public class GamePanel extends Canvas{
 	private int avatarX;
 	private int avatarY;
 	private boolean showInv;
+	private boolean userMove;
 
 	
 	public GamePanel(){
 		imgl = new ImageLoader();
 		
-		this.setPreferredSize(d = new Dimension(imgl.getHud().getWidth(getFocusCycleRootAncestor()),imgl.getHud().getHeight(getFocusCycleRootAncestor())-1));
+		setPreferredSize(d = new Dimension(imgl.getHud().getWidth(getFocusCycleRootAncestor()),imgl.getHud().getHeight(getFocusCycleRootAncestor())-1));
 		
 		imgI = imgl.getImg();
 				
@@ -39,6 +40,7 @@ public class GamePanel extends Canvas{
 		avatarY = 221;
 		
 		showInv = false;
+	
 	}
 	
 	public void init() {
@@ -77,8 +79,13 @@ public class GamePanel extends Canvas{
 			invZeichnen(inv,g);
 		}
 		
-		drawTextMove((Knoten)l[2][2], g);
+		g.setFont(new Font("test", Font.PLAIN, 18));
 		
+		if(!userMove) {
+			drawTextMove((Knoten)l[2][2], g);
+		}else {
+			g.drawString("Du darfst nun weitergehen", 550, 100);
+		}
 		strategy.show();
         g.dispose();
 		
@@ -134,8 +141,20 @@ public class GamePanel extends Canvas{
 		this.showInv = showInv;
 	}
 	
-	public void drawTextMove(Knoten k,Graphics g) {
-		g.drawString(k.getEvent().getInfo(),550 ,80 );
+	public void drawTextMove(Knoten k, Graphics2D g) {
+		
+		for(int i = 0; i< k.getEvent().getInfo().length; i++) {
+			g.drawString(k.getEvent().getInfo()[i], 550, 100+i*25);
+		}
 	}
+
+	public boolean isUserMove() {
+		return userMove;
+	}
+
+	public void setUserMove(boolean userMove) {
+		this.userMove = userMove;
+	}
+	
 		
 }

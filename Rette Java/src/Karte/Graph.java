@@ -100,10 +100,28 @@ public class Graph {
 		
 		Fight f = new Fight();
 		f.setEnemy("MarcoMaurer");
-		f.setInfo("Du triffst auf Marco Maurer, einen der geführchtetsten Programmier-Zauberer "
-				+ "auf ganz Java. Seit der Herrschaft von professor P ist er sein treuer"
-				+ " Diener und bewacht den Hafen der Insel. Er fordert dich zum Duell heraus. "
-				+ "Wenn du die Herausforderung annimmst, drücke 'h'. Wenn du lieber fliehen möchtest drücke 'f'");
-		lem[1][17].setEvent(f);
+		
+		String[] temp = new String[11];
+		
+				//"Hier befindet sich kein Gegner."
+		temp[0] = "Du triffst auf Marco Maurer,";
+		temp[1]	= "einen der geführchtetsten ";
+		temp[2] = "Programmier-Zauberer auf ganz";
+		temp[3] = "Java. Seit der Herrschaft von";
+		temp[4] = "Professor P ist er sein treuer";
+		temp[5] = "Diener und bewacht den Hafen der";
+		temp[6] = "Insel. Er fordert dich zum Duell";
+		temp[7] = "heraus.";
+		temp[8] = "";
+		temp[9] = "Drücke 'H' um die Herausforderng";
+		temp[10]= "zu starten";
+ 		f.setInfo(temp);
+ 		System.out.println(f.getEnemy());
+ 		System.out.println(f.getInfo()[0]);
+ 		lem[1][17].setEvent(f);
+		System.out.println(lem[1][17].getEvent().getEnemy());
+		
+		System.out.println(lem[1][17].getEvent().getInfo()[0]);
+		
 	}
 }

@@ -4,12 +4,12 @@ import javax.swing.*;
 
 public class Knoten extends Listenelement{
 	
-	private Event event;
+	private Fight f;
 	private boolean aufgedeckt;
 	private String karte;
 	
 	public Knoten() {
-		event = new Fight();
+		f = new Fight();
 	}
 	
 	public boolean isAufgedeckt() {
@@ -25,10 +25,10 @@ public class Knoten extends Listenelement{
 	public void setKarte(String karte) {
 		this.karte = karte;
 	}
-	public void setEvent(Event e) {
-		event = e;
+	public void setEvent(Fight event) {
+		this.f = event;
 	}
 	public Event getEvent() {
-		return event;
+		return f;
 	}
 }

@@ -27,18 +27,13 @@ public class Model {
 		frame = new MyFrame();
 		player = new Player();
 		graph = new Graph();
-		frame.setSize(gameView.getDimension());
 		frame.setIconImage(gameView.icon().getImage());
 		frame.add(gameView);
-		frame.pack();
 		gameView.init();
-		//updateKoordinaten(0, 0);
-		userMove = true;
-		//gameView.zeichnen(getKarte(), player.getInv());
+		userMove = false;
 		g = new GameController(this);
 		frame.addKeyListener(g);
 		frame.pack();
-	
 	}
 
 	public void zeichnen() {
@@ -136,6 +131,7 @@ public class Model {
 
 	public void setUserMove(boolean userMove) {
 		this.userMove = userMove;
+		gameView.setUserMove(userMove);
 	}
 	public void showInv() {
 		if(gameView.isShowInv()) {
@@ -151,7 +147,7 @@ public class Model {
 
 	public void setChangeX(int changeX) {
 		this.changeX = changeX;
-		userMove = false;
+		setUserMove(false);
 	}
 
 	public int getChangeY() {
@@ -161,7 +157,7 @@ public class Model {
 
 	public void setChangeY(int changeY) {
 		this.changeY = changeY;
-		userMove = false;
+		setUserMove(false);
 	}
 	
 }

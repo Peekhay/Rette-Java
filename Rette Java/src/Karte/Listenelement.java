@@ -8,7 +8,7 @@ public abstract class Listenelement {
 	private Listenelement westen;
 	private boolean aufgedeckt;
 	private String karte;
-	
+	private Event e;
 	
 	public Listenelement getNorden() {
 		return norden;
@@ -48,7 +48,10 @@ public abstract class Listenelement {
 	}
 	public void setEvent(Fight f) {
 		// TODO Auto-generated method stub
-		
+		this.e = f;
+	}
+	public Event getEvent(){
+		return e;
 	}
 	
 

@@ -16,6 +16,7 @@ public class Model {
 	private Player player;
 	private Graph graph;
 	private boolean userMove;
+	private boolean userFight;
 	private GameController g;
 	private int changeX;
 	private int changeY;
